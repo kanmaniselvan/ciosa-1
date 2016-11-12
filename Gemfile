@@ -30,9 +30,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use puma as the app server
 gem 'puma'
 
-# SPREE GEMS
-gem 'spree', '~> 3.1.0'
-gem 'spree_auth_devise', '~> 3.1.0'
+gem 'devise'
+gem 'materialize-sass'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
+gem 'paperclip'
+gem 'after_party'
+
+gem 'formtastic'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
