@@ -8,6 +8,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :address
       t.string :user_type,              null: false, default: ""
       t.integer :organization_id
+      t.string :pan_number
+      t.string :bank_name
+      t.string :account_number
+      t.boolean :is_approved
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

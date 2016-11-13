@@ -1,0 +1,57 @@
+<div class="row">
+
+  <div class="col s6">
+
+    <%= flash[:error] %>
+    <%= form_tag(orders_path, method: :post) do %>
+        <%= hidden_field_tag 'cart_product_ids', @cart_products.map(&:id) %>
+        <%= hidden_field_tag 'billing_address', current_user.address, class: 'materialize-textarea' %>
+        <label for="delivery_address">Delivery Address</label>
+        <%= text_area_tag 'delivery_address', current_user.address , class: 'materialize-textarea' %>
+
+        <%= submit_tag(value='Place Order', class: "btn") %>
+    <% end %>
+
+
+  </div>
+  <div class="col s6">
+    <div>
+      <table class="highlight responsive-table">
+        <thead>
+        <tr>
+          <th data-field="product">Product</th>
+          <th data-field="descr">Description</th>
+          <th data-field="quantity">Quantity</th>
+          <th data-field="price">Unit Price</th>
+          <th data-field="price">Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @cart_products.each do |cart_product| %>
+            <tr>
+              <% product = cart_product.product %>
+              <td>
+                <%= product.name %>
+              </td>
+              <td>
+                <%= product.description %>
+              </td>
+              <td>
+                <%= cart_product.quantity %>
+              </td>
+              <td>
+                <%= product.price %>
+              </td>
+              <td id="qn_<%=cart_product.id%>">
+                <%= cart_product.quantity * product.price %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Change products?', cart_products_path %>
+    </div>
+  </div>
+
+</div>
+

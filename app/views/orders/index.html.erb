@@ -1,0 +1,20 @@
+<%= link_to 'Products', products_path %> | <%= link_to 'Cart', cart_products_path %>
+
+<ul>
+  <% @orders.each do |order| %>
+      <strong><%= order.cancelled ? 'Order Canceled' : '' %></strong>
+      <li>
+        Order on - <%= order.created_at.in_time_zone('Chennai') %> | Total Price: <%= order.total_price %>
+      </li>
+      <li>
+        <% order.ordered_products.each do |ordered_product| %>
+            <%= link_to ordered_product.product.name, product_path(id: ordered_product.product_id) %> - <%= ordered_product.price %>
+        <% end %>
+      </li>
+      <% unless order.cancelled %>
+          <li>
+            <%= link_to( 'Cancer order', cancel_order_path(id: order.id), method: :post )%>
+          </li>
+      <% end %>
+  <% end %>
+</ul>

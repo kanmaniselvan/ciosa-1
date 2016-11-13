@@ -1,4 +1,6 @@
 class Organization < ActiveRecord::Base
+  include Approval
+
 	ORGANIZATION_TYPE_STORE = 'Store'
 	ORGANIZATION_TYPE_NGO = 'NGO'
 
@@ -8,4 +10,6 @@ class Organization < ActiveRecord::Base
 	validates :name, :creator, :email, :mobile, :organization_type, :pan_tin_number,
 						:is_store, :is_eco_friendly, :can_do_logistics, presence: true
 	validates :email, :mobile, uniqueness: true
+
+	scope :all_organizations, -> { all }
 end

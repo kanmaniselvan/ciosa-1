@@ -39,6 +39,9 @@ gem 'paperclip'
 gem 'after_party'
 
 gem 'formtastic'
+gem 'activeadmin', github: 'activeadmin'
+
+gem 'mail'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
